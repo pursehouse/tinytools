@@ -1,4 +1,7 @@
 {
+	"name": "pursehouse/tinytools",
+	"type": "library",
+	"description": "Tiny php helper classes",
 	"keywords": [
 		"php",
 		"tools",
@@ -10,9 +13,6 @@
 			"Pursehouse\\Tinytools\\" : "src"
 		}
 	},
-	"name": "pursehouse/tinytools",
-	"type": "module",
-	"description": "Tiny php helper classes",
 	"require": {
 		
 	}
