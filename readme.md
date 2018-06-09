@@ -1,17 +1,21 @@
+# Tiny Tools
 
-# Create a variable
+Intented for a site able to be built out with fake data dynamically, and have variables and display match what they will need changing to in the future.
+
+
+## Create a variable
 
 ```php
 $mock = new \Pursehouse\TinyTools\Mock();
 ```
 
-# Use property as a string
+## Use property as a string
 
 ```php
 echo $mock->name
 ```
 
-# Use property as a integer
+## Use property as a integer
 
 random value 1 to 10
 
@@ -19,7 +23,7 @@ random value 1 to 10
 echo $mock->hits_int_10
 ```
 
-# Use property as a float
+## Use property as a float
 
 random value 1 to 10
 
@@ -28,19 +32,19 @@ echo $mock->somefloat_float_10
 ```
 
 
-# Use as object with array property
+## Use as object with array property
 
 ```php
     foreach( $mock->fruits_array_2 as $k => $v ) {
 ```
 
-# Use as aray with array property
+## Use as aray with array property
 
 ```php
 foreach( $mock['traits_array_2'] as $k => $v ) {
 ```
 
-# Recursion
+## Recursion
 
 
 ```php
