@@ -1,18 +1,19 @@
 {
-	"keywords" : [
-		"php tools classes composer"
+	"keywords": [
+		"php",
+		"tools",
+		"classes",
+		"composer"
 	],
-	"autoload" : {
-		"psr-4" : {
+	"autoload": {
+		"psr-4": {
 			"Pursehouse\\Tinytools\\" : "src"
 		}
 	},
-	"name" : "pursehouse/tinytools",
-	"type" : "composer-plugin",
-	"description" : "Tiny php helper classes",
-	"require" : {
-		"php" : ">=7.2"
-	},
-	"extra": {
+	"name": "pursehouse/tinytools",
+	"type": "composer-plugin",
+	"description": "Tiny php helper classes",
+	"require": {
+		
 	}
 }
