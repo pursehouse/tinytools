@@ -11,7 +11,7 @@
 		}
 	},
 	"name": "pursehouse/tinytools",
-	"type": "composer-plugin",
+	"type": "module",
 	"description": "Tiny php helper classes",
 	"require": {
 		
