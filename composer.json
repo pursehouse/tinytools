@@ -12,5 +12,7 @@
 	"description" : "Tiny php helper classes",
 	"require" : {
 		"php" : ">=7.2"
+	},
+	"extra": {
 	}
 }
