@@ -16,3 +16,26 @@ foreach( $mock->fruits_array_2 as $k => $v ) {
     }
 }
 
+
+echo $mock->this . "\n";
+
+echo $mock->this->that . "\n";
+
+print_R( $mock->this );
+
+echo "\n";
+
+foreach( $mock->fruits_array_3 as $k => $v ) {
+    print_r( [ __LINE__, $k ] );
+}
+
+echo "\n";
+
+foreach( $mock->banana as $k => $v ) {
+    echo $v->line;
+    echo "\n";
+}
+
+echo "\n";
+
+

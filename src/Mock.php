@@ -3,13 +3,47 @@
 namespace Pursehouse\TinyTools;
 
 class Mock implements \IteratorAggregate, \ArrayAccess, \JsonSerializable {
+
     private $values = [];
+    private $name   = '';
+    private $count  = '';
+    private $type   = '';
 
-    public function __construct( $data = [] ) {
+    private function debug( $line ) {
 
-        foreach( $data as $k => $v ) {
-            $this->{$k} = $v;
+        echo $line." : ".$this->name." : ".$this->type." : ".$this->count."\n";
+
+    }
+
+    public function __construct( $name = '' ) {
+
+        $this->name     = $name;
+
+        $expl           = explode( '_', $this->name );
+        $this->count    = (int)array_pop( $expl ) ?: 2;
+        $this->type     = array_pop( $expl );
+        $this->subName  = array_pop( $expl ) ?: $this->name;
+
+        switch( $this->type ) {
+            case 'int':
+                $this->values[ $this->name ] = rand( 1, $this->count );
+            break;
+            case 'float':
+                $this->values[ $this->name ] = rand( 1, $this->count * 100 ) / 100;
+            break;
+            case 'array':
+//
+//                 for( $n = $this->count; $n != 0; $n-- ) {
+//                     $this->values[ $this->name ][] = new Mock( $this->subname );
+//                 }
+            break;
         }
+
+    }
+
+    public function __toString() {
+
+        return $this->name;
 
     }
 
@@ -21,31 +55,13 @@ class Mock implements \IteratorAggregate, \ArrayAccess, \JsonSerializable {
 
     public function __get( $name ) {
 
-        $expl = explode( '_', $name );
-        $count = (int)array_pop( $expl );
-        $type = array_pop( $expl );
-        switch( $type ) {
-            case 'int':
-                return $this->values[ $name ] = rand( 1, $count );
-            break;
-            case 'float':
-                return $this->values[ $name ] = rand( 1, $count * 100 ) / 100;
-            break;
-            case 'array':
-                if( $count > 0 ) {
-                    return $this->values[ $name ] = new Mock( array_fill( 0, $count, new Mock() ) );
-                }
-            break;
-        }
-
-        return $this->values[ $name ] = $name;
+        return $this->values[ $name ] = new Mock( $name );
 
     }
 
     public function getIterator() {
 
-        return new \ArrayIterator( $this->values );
-
+        return new \ArrayIterator( array_fill( 0, $this->count, new Mock( $this->subname ) ) );
     }
 
     public function jsonSerialize() {
@@ -68,7 +84,7 @@ class Mock implements \IteratorAggregate, \ArrayAccess, \JsonSerializable {
 
     public function offsetExists( $offset ) {
 
-        return isset( $this->values[ $offset ] );
+        return $offset <= $this->count;
 
     }
 
